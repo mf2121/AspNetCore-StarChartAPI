@@ -12,10 +12,22 @@ namespace StarChart.Controllers
     public class CelestialObjectController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private object celestialObject;
 
         public CelestialObjectController(ApplicationDbContext context)
         {
             _context = context;
         }
+
+        [HttpGet("{id:int}", Name = "GetByID")]
+        public IActionResult GetByID(int id)
+        {
+        var celestialObject = _context.CelestialObjects.Find(id);
+        if (celestialObject == null)
+            return NotFound();
+            celestialObject.Satellites = _context.CelestialObjects.Where(e => e.OrbitedObjectId == id).ToList();
+            return Ok(celestialObject);
+        }
+
     }
 }
