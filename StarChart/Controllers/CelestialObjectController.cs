@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using StarChart.Data;
 
 namespace StarChart.Controllers
-/////Module 5
 {
     [Route("")]
     [ApiController]
