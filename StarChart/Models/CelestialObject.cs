@@ -11,6 +11,8 @@ namespace StarChart.Models
 {
     public class CelestialObject
     {
+        internal readonly object OrbitedObject;
+
         public int ID { get; set; }
 
         [Required]
